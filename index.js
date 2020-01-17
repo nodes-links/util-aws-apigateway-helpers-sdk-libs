@@ -84,7 +84,7 @@ exports.generateSdk = (apiKey, rootPath) => tslib_1.__awaiter(this, void 0, void
             const sdkContents = `
 
       import uritemplate = require('uritemplate');
-      import { apiGateway } from '@nl/util/aws/apigateway/helpers/sdk-libs';
+      import { apiGateway } from '@nodes-links/util-aws-apigateway-helpers-sdk-libs';
 
       ${(yield zipContents.file(filename).async('string'))
                 .replace(`var apigClientFactory = {};`, `export const apigClientFactory:any = {};`)
