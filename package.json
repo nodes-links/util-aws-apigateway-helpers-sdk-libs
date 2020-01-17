@@ -1,7 +1,7 @@
 {
   "name": "@nodes-links/util-aws-apigateway-helpers-sdk-libs",
   "version": "0.0.1",
-  "description": "Utility for Nodes & Links sdk",
+  "description": "Utility for the Nodes & Links sdk",
   "author": {
     "name": "Nodes & Links",
     "email": "services@nodeslinks.com",
@@ -10,12 +10,13 @@
   "types": "index.d.ts",
   "main": "index.js",
   "scripts": {
-    "init-add-origin": "git init && git remote add origin https://github.com/nodes-links/util-aws-apigateway-helpers-sdk-libs.git && git fetch",
+    "pull-origin": "git init && git remote add origin https://github.com/nodes-links/util-aws-apigateway-helpers-sdk-libs.git && git fetch && git checkout -f master && git pull",
     "prepare-out": "rm -rf .\\out && mkdir .\\out",
-    "build": "tsc --project tsconfig.json && copy .\\package.json .\\out\\package.json",
+    "copy-package-json": "copy .\\package.json .\\out\\package.json",
+    "build": "tsc --project tsconfig.json && npm run copy-package-json",
     "publish": "xcopy .\\out\\* %MONO_PATH%\\node_modules\\@nodes-links\\util-aws-apigateway-helpers-sdk-libs /i/y/e",
-    "build-and-publish": "npm run prepare-out && npm run build && cd out && npm run init-add-origin && cd .. && npm run publish",
-    "push-origin": "npm run build-and-publish && cd out && git add . && git commit -m 'Add new version' && git push -u origin master",
+    "build-and-publish": "npm run prepare-out && npm run copy-package-json && cd .\\out && npm run pull-origin && cd .. && npm run build && npm run publish",
+    "push-origin": "npm run build-and-publish && cd .\\out && git add . && git commit -m 'Add new version' && git push",
     "version:patch": "npm version patch"
   },
   "homepage": "https://github.com/nodes-links/util-aws-apigateway-helpers-sdk-libs",
