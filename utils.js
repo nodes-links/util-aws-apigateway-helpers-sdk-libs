@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.utils = void 0;
 exports.utils = {
     assertDefined: function (object, name) {
         if (object === undefined) {
